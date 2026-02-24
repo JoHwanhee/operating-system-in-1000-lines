@@ -236,7 +236,7 @@ __asm__ __volatile__("csrr %0, sepc" : "=r"(value));
 
 
 ```c
-__asm__ __volatile__("csrw sscratch, %0" : : "r"(123));
+__asm__ __volatile__("csrw sscratch, %0" : /* 출력 오퍼랜드는 비어 있음 */ : "r"(123));
 ```
 
 위 예시는 `csrw` 명령어로 `sscratch` CSR에 123을 쓰는 코드입니다. `%0`은 123을 담은 레지스터(`“r”` 제약)에 해당하고, 실제로 컴파일러가 다음과 같은 코드를 생성합니다.

@@ -224,7 +224,7 @@ __asm__ __volatile__("csrr %0, sepc" : "=r"(value));
 This reads the value of the `sepc` CSR using the `csrr` instruction, and assigns it to the `value` variable. `%0` corresponds to the `value` variable.
 
 ```c
-__asm__ __volatile__("csrw sscratch, %0" : : "r"(123));
+__asm__ __volatile__("csrw sscratch, %0" : /* output operands are empty */ : "r"(123));
 ```
 
 This writes `123` to the `sscratch` CSR, using the `csrw` instruction. `%0` corresponds to the register containing `123` (`r` constraint), and it would actually look like:

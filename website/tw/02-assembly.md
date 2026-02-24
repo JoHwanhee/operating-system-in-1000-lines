@@ -225,7 +225,7 @@ __asm__ __volatile__("csrr %0, sepc" : "=r"(value));
 這段使用 `csrr` 指令從 `sepc` CSR 讀取值，並存入 `value` 變數。其中 `%0` 對應到 `value`。
 
 ```c
-__asm__ __volatile__("csrw sscratch, %0" : : "r"(123));
+__asm__ __volatile__("csrw sscratch, %0" : /* 輸出操作元為空 */ : "r"(123));
 ```
 
 這段會把常數 `123` 寫入 `sscratch` CSR。`%0` 對應到放有 `123` 的暫存器（由編譯器安排）。實際展開可能長這樣：
